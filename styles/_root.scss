@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+    $red: #E33A3A;
+    $red2: #EB5757;
+    $red3: #EF7E7E;
+    $dark: #202020;
+    $dark2: #353233;
+    $dark2: #4B494A;
+    $light: #F9F9F9;
+    $light2: #E5E5E5;
+    $light3: #D8D8D8;
+    $light4: #F4F4F4;
+    @mixin gradient {
+        background: linear-gradient(270deg, #E33A3A 0%, #E37A7A 100%);
+    }
