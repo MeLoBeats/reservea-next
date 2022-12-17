@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String    @id @default(uuid())
+  firstname   String
+  lastname    String
+  email       String
+  password    String
+  profile_pic Image?    @relation(fields: [imageId], references: [id])
+  imageId     String
+  booking     Booking[]
+  offer       Offer[]
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+}
+
+model Booking {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id])
+  start      DateTime
+  end        DateTime
+  userId     String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Image {
+  id         String   @id @default(uuid())
+  image      String
+  user       User[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  Offer      Offer?   @relation(fields: [offerId], references: [id])
+  offerId    String?
+}
+
+model Offer {
+  id          String    @id @default(uuid())
+  author      User      @relation(fields: [userId], references: [id])
+  category    Category  @relation(fields: [categoryId], references: [id])
+  title       String
+  description String
+  address     Address   @relation(fields: [addressId], references: [id])
+  images      Image[]
+  price       Int
+  userId      String
+  categoryId  String
+  addressId   String
+  comment     Comment[]
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+}
+
+model Address {
+  id          String   @id @default(uuid())
+  address     String
+  country     String
+  city        String
+  postal_code String
+  complements String?
+  offer       Offer[]
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
+model Category {
+  id         String   @id @default(uuid())
+  category   String
+  offer      Offer[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Comment {
+  id         String   @id @default(uuid())
+  offer      Offer?   @relation(fields: [offerId], references: [id])
+  content    String
+  offerId    String?
+  created_at DateTime @default(now())
+}
