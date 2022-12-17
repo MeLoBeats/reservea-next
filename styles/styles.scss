@@ -1,0 +1,15 @@
+@import "./root";
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: "Poppins";
+    background: $light;
+}

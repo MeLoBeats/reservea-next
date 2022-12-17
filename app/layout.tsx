@@ -1,6 +1,8 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-const layout = ({ children }) => {
+import "../styles/styles.scss";
+
+const layout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="fr">
       <head />
