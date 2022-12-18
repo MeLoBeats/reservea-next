@@ -1,0 +1,25 @@
+@import "../root";
+
+.logo {
+    p {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $red;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 80%;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 0);
+            height: 3px;
+            border-radius: 10px;
+            background-color: $red;
+        }
+    }
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+}

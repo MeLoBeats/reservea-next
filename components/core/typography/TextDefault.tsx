@@ -4,10 +4,11 @@ import styles from "@/styles/modules/typography.module.scss";
 
 type Props = {
   children: ReactNode;
+  className?: string;
 };
 
-function Title({ children }: Props) {
-  return <p className={styles.text}>{children}</p>;
+function Text({ children, className }: Props) {
+  return <p className={`${styles.text} ${className}`}>{children}</p>;
 }
 
-export default Title;
+export default Text;

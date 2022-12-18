@@ -13,3 +13,21 @@
     @mixin gradient {
         background: linear-gradient(270deg, #E33A3A 0%, #E37A7A 100%);
     }
+    @mixin hoverEffet {
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            border-radius: 10px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 0%;
+            height: 3px;
+            background-color: $dark;
+            transition: all .3s ease;
+        }
+        &:hover::before {
+                width: 90%;
+            }
+    }
